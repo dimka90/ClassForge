@@ -7,7 +7,7 @@ const test = async () =>{
         console.log("Database Connected successfully")
         
         let event = await Admin.build({
-            usernname: "Dimka",
+            userName: "Dimka",
             password: "123345"
 
         });

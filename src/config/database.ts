@@ -16,11 +16,11 @@ const config = {
   development: {
     username: DB_USER || 'postgres',
     password: DB_PASSWORD || 'password',
-    database: DB_NAME || 'myapp_development',
+    database: DB_NAME || 'time_table_planner',
     host: DB_HOST || 'localhost',
     port: parseInt(DB_PORT || '5432'),
     dialect: 'postgres' as const,
-    logging: console.log, // Enable SQL logging in development
+    logging: console.log,
     pool: {
       max: 5,
       min: 0,
@@ -31,11 +31,11 @@ const config = {
   test: {
     username: DB_USER || 'postgres',
     password: DB_PASSWORD || 'password',
-    database: `${DB_NAME || 'myapp'}_test`,
+    database: `${DB_NAME || 'time_table_planner'}_test`,
     host: DB_HOST || 'localhost',
     port: parseInt(DB_PORT || '5432'),
     dialect: 'postgres' as const,
-    logging: false // Disable logging in tests
+    logging: false
   },
   production: {
     use_env_variable: 'DATABASE_URL',
@@ -55,3 +55,5 @@ const config = {
     }
   }
 };
+
+export default config;
