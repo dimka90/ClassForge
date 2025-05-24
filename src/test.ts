@@ -1,5 +1,5 @@
 import sequelize from "./config/sequilize";
-import Admin from "./model/user";
+import Admin from "./model/admin";
 const test = async () =>{
 
     try {
