@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/dimka90/ClassForge#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pg": "^8.16.0",
@@ -29,6 +30,7 @@
     "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.2",
     "@types/node": "^22.15.21",
     "dotenv-cli": "^8.0.0",

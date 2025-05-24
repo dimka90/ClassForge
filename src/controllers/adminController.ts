@@ -1,60 +1,87 @@
 import { Request, Response } from "express";
 import { createAdmin } from "../db/admin";
+import { adminlogin } from "../db/adminlogin";
+export async function createAdminController(
+  req: Request,
+  res: Response
+): Promise<Response> {
+  const { username, password, email } = req.body;
 
-export async function createAdminController(req: Request, res: Response){
+  // Dimka, kar ka matan ka validate username length
 
-    const {username, password, email} = req.body;
+  if (!username || !password || !email) {
+    return res.status(400).send({
+      success: false,
+      message: "Username or password or email can't be empty",
+    });
+  }
+  try {
+    let newAdmin = await createAdmin(username, password, email);
 
-    if(!username || !password ){
+    return res.status(201).send({
+      success: true,
+      message: "Admin successfully registered",
+      data: newAdmin,
+    });
+  } catch (error) {
+    let errorMessage = "Unknown error";
 
-        return res.status(400).send({
+    if (
+      error &&
+      typeof error === "object" &&
+      "errors" in error &&
+      Array.isArray(error.errors as any)
+    ) {
+      errorMessage = (error as any).errors
+        .map((element: any) => element.message)
+        .join(",");
 
-            success: false,
-            message: "Username or password can't be empty"
-        });
-
-
+      return res.status(404).send({
+        success: false,
+        message: errorMessage,
+      });
     }
-    try {
 
+    return res.send({
+      success: true,
+      message:
+        typeof (error as any).message === "string"
+          ? (error as any).message
+          : "unknown error",
+    });
+  }
+}
 
-        let newAdmin =  await createAdmin(username, password, email);
-        console.log()
-
-    res.send({
-        success: true,
-        message: newAdmin
-    })
-        
-    } catch (error) {
-
-        let errorMessage = "Unknown error"
-        
-        if (error && typeof error === "object" && 'errors' in error && Array.isArray((error).errors as any)){
-
-            errorMessage = (error as any).errors.map((element: any) => element.message).join(",");
-        }
-         res.send({
-        success: true,
-        message: errorMessage
-    })
-    }
-
-
+export function getAllAdmin(req: Request, res: Response) {
+  return res.send({
+    success: true,
+    message: "Welcome to the admin page",
+  });
+}
+export function getAdmin(req: Request, res: Response) {
+  return res.send({
+    success: true,
+    message: "All admin are returned",
+  });
 }
 
 
-export function getAllAdmin(req: Request, res: Response){
+// login
 
-    res.send({
-        success: true,
-        message: "Welcome to the admin page"
+export async function adminloginController(req: Request, res: Response): Promise<Response>{
+const {identifier, password} = req.body;
+
+if(!identifier || !password) {
+ return   res.status(400).send({
+        message:"Email, username  or Password can't be empty"
     })
 }
-export function getAdmin(req: Request, res: Response){
-    res.send({
-        success: true,
-        message: "All admin are returned"
-    })
+let loginData = await  adminlogin(identifier, password);
+
+return res.status(200).send({
+success: true,
+message:,
+data: loginData
+})
 
 }

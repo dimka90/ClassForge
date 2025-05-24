@@ -1,6 +1,6 @@
 import bycrpt from 'bcrypt';
 
-export async function hashpassword(password: string) : Promise<String>{
+export async function hashPassword(password: string) : Promise<String>{
     const saltHash = 10;
     const hash_password = await bycrpt.hash(password, saltHash);
     return hash_password
