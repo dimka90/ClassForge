@@ -1,12 +1,11 @@
 import { Model, DataTypes } from "sequelize";
-import { DataType } from "sequelize-typescript";
-
 import sequelize from "../config/sequilize";
 
 class Admin extends Model{
     public id!: number;
     public userName!: string;
     public password!: string;
+    public email!: string;
 }
 
 Admin.init(
@@ -18,10 +17,14 @@ id: {
     primaryKey: true
 
 },
-userName: {
-    type: DataType.STRING,
+username: {
+    type: DataTypes.STRING,
     allowNull: false
 },
+  email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 password: {
 type:DataTypes.STRING,
 allowNull: false
@@ -29,8 +32,8 @@ allowNull: false
 },
 {
 sequelize,
-tableName: "Admin",
-modelName: "admins"
+tableName: "admins",
+modelName: "Admins"
 });
 
 export default Admin;
