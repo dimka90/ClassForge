@@ -1,47 +1,44 @@
 import Admin from "../model/admin";
 import { Op } from "sequelize";
 import { verifypassword } from "../utils/hash";
-export async function adminlogin(identifier: string, password: string): Promise<Object>{
-
-    // Check for user in the db
-    try {
-        let user = await Admin.findOne(
-            {
-                where:{
-                [Op.or]: [
-                    
-                    {email: identifier},
-                    {username: identifier}
-                ]
-            }
-        }
-    )
+import { LoginResponse } from "../types/adminloginResponse";
+import { AdminDetails } from "../types/admindetails";
+export async function adminlogin(
+  identifier: string,
+  password: string
+): Promise<LoginResponse<AdminDetails>> {
+  // Check for user in the db
+  try {
+    let user = await Admin.findOne({
+      where: {
+        [Op.or]: [{ email: identifier }, { username: identifier }],
+      },
+    });
     if (!user) {
-
-        throw new Error(`${identifier} does not exist`)
+      throw new Error(`${identifier} does not exist`);
     }
-    
 
-    console.log(user)
-    let  hash_password = user['dataValues'].password;
+    console.log(user);
+    let hash_password = user["dataValues"].password;
 
     let isPasswordValid = await verifypassword(password, hash_password);
 
-    if(isPasswordValid){
+    let  {id, email, username}=user["dataValues"];
 
-        return user['dataValues']
-
+    let admindetails  = {
+        id,
+        username,
+        email
+    }
+    if (isPasswordValid) {
+      return { success: true, data: admindetails};
     }
 
     return {
-        message: "Invalid Password"
-    }
-   
-
-    } catch (error) {
-
-        throw error
-        
-    }
-    
+      success: false,
+      message: "Invalid Password",
+    };
+  } catch (error) {
+    throw error;
+  }
 }

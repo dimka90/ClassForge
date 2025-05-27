@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { createAdmin } from "../db/admin";
 import { adminlogin } from "../db/adminlogin";
+import { createToken } from "../utils/createJwttoken";
+import { AdminDetails } from "../types/admindetails";
 export async function createAdminController(
   req: Request,
   res: Response
@@ -77,11 +79,25 @@ if(!identifier || !password) {
     })
 }
 let loginData = await  adminlogin(identifier, password);
-
-return res.status(200).send({
+if(loginData.success) {
+//generate token
+const {id, username, email} = loginData.data;
+let userToken = await createToken({
+  id,
+   email,
+  username,
+ 
+});
+  return res.status(200).send({
 success: true,
-message:,
-data: loginData
+message:" User successfully login ",
+data: userToken
+}
+)
+}
+return res.status(200).send({
+success: false,
+message:loginData.message
 })
 
 }
