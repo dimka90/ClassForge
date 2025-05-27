@@ -26,7 +26,22 @@ module.exports = {
       capacity: {
           type: Sequelize.INTEGER,
           allowNull: false
-      }
+      },
+       generatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
+      },
+        createdAt: {
+      type: Sequelize.DATE,
+      allowNull: false,
+       defaultValue: Sequelize.NOW
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW
+    }
     })
   },
 

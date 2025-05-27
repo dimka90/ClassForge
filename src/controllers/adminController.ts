@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { createAdmin } from "../db/admin";
 import { adminlogin } from "../db/adminlogin";
 import { createToken } from "../utils/createJwttoken";
-import { AdminDetails } from "../types/admindetails";
 export async function createAdminController(
   req: Request,
   res: Response
@@ -57,13 +56,15 @@ export async function createAdminController(
 export function getAllAdmin(req: Request, res: Response) {
   return res.send({
     success: true,
-    message: "Welcome to the admin page",
+    message: "All Admin are returned",
   });
 }
+
+
 export function getAdmin(req: Request, res: Response) {
   return res.send({
     success: true,
-    message: "All admin are returned",
+    message: "An admin is returned",
   });
 }
 

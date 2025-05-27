@@ -22,11 +22,16 @@ Session.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    generatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
     startDate: {
         type: DataTypes.DATEONLY,
         allowNull: false
     },
-    endate: {
+    endDate: {
         type: DataTypes.DATEONLY,
         allowNull: false
     }
