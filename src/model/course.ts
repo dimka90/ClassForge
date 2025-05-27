@@ -35,3 +35,5 @@ tableName:"courses",
 modelName:"Course"
 }
 )
+
+export default Course

@@ -1,5 +1,6 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/sequilize";
+import Session from "./session";
 
 class Timetable extends Model {
   public id!: number;
@@ -8,6 +9,10 @@ class Timetable extends Model {
   public startDate!: string;
   public endDate!: string;
   public generatedAt!: Date;
+
+  static associate(){
+    Timetable.belongsTo(Session, {foreignKey: "sessionId"})
+  }
 }
 
 Timetable.init(
