@@ -27,12 +27,13 @@ title: {
 level: {
     type: DataTypes.STRING,
     allowNull: false
-}
+},
 },
 {
 sequelize,
 tableName:"courses",
-modelName:"Course"
+modelName:"Course",
+timestamps: true
 }
 )
 

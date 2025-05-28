@@ -6,6 +6,7 @@ import { getHallController } from "../controllers/hallController";
 import { getAllInvigilatorsController, invigilatorController } from "../controllers/invigilator";
 import { createSession, getAllSession } from "../db/session";
 import { getAllSessionController, sessionController } from "../controllers/session";
+import { courseController, getAllCoursesController } from "../controllers/course";
 const adminrouter = Router();
 
 
@@ -22,14 +23,14 @@ adminrouter.get("/halls", getHallController as any);
 adminrouter.post("/invigilator", invigilatorController as any);
 adminrouter.get("/invigilator", getAllInvigilatorsController as any)
 
-
-
-
 // Session
 
 adminrouter.post("/session", sessionController  as any)
 adminrouter.get("/session", getAllSessionController  as any)
 
+// Course
+adminrouter.post("/course", courseController as any)
+adminrouter.get("/course", getAllCoursesController as any)
 adminrouter.get("/:id", getAdmin as any)
 adminrouter.get("/",  getAllAdmin   as any);
 
