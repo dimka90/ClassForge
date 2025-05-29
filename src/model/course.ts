@@ -5,6 +5,7 @@ public id!: number;
 public  code!: string;     
 public title!: string;    
 public level!: string;
+public creditUint!: string;
 
 }
 
@@ -28,6 +29,10 @@ level: {
     type: DataTypes.STRING,
     allowNull: false
 },
+creditUnit: {
+    type: DataTypes.STRING,
+    allowNull: false
+}
 },
 {
 sequelize,

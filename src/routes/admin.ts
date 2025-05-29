@@ -4,11 +4,11 @@ import { adminloginController } from "../controllers/adminController";
 import { createHallController } from "../controllers/hallController";
 import { getHallController } from "../controllers/hallController";
 import { getAllInvigilatorsController, invigilatorController } from "../controllers/invigilator";
-import { createSession, getAllSession } from "../db/session";
 import { getAllSessionController, sessionController } from "../controllers/session";
 import { courseController, getAllCoursesController } from "../controllers/course";
 import { getAllTimetableController, timeTableController } from "../controllers/timetable";
-import { getAllTimetable } from "../db/timetable";
+import {getAllTimetableItemController} from "../controllers/timetableItem"
+import {createTimetableItemController }from "../controllers/timetableItem"
 const adminrouter = Router();
 
 
@@ -38,9 +38,13 @@ adminrouter.get("/course", getAllCoursesController as any)
 adminrouter.post("/time-table", timeTableController as any)
 adminrouter.get("/time-table", getAllTimetableController as any)
 
+// timetable item
+
+adminrouter.post("/time-table-item", createTimetableItemController  as any);
+adminrouter.get("/time-table-item", getAllTimetableItemController  as any);
+
 
 adminrouter.get("/:id", getAdmin as any)
 adminrouter.get("/",  getAllAdmin   as any);
-
 
 export default adminrouter;

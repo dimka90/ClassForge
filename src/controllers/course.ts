@@ -3,9 +3,9 @@ import { createCourse } from "../db/course";
 import Course from "../model/course";
 
 export async function courseController(req: Request, res: Response): Promise<Response> {
-  const { code, title, level } = req.body;
+  const { code, title, level , creditUnit} = req.body;
 
-  if (!code || !title || !level) {
+  if (!code || !title || !level || !creditUnit) {
     return res.status(406).send({
       success: false,
       message: "Fields code, title, and level are required",
@@ -13,7 +13,7 @@ export async function courseController(req: Request, res: Response): Promise<Res
   }
 
   try {
-    const result = await createCourse({ code, title, level });
+    const result = await createCourse({ code, title, level, creditUnit});
 
     return res.status(200).send({
       success: true,
