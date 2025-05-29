@@ -7,6 +7,8 @@ import { getAllInvigilatorsController, invigilatorController } from "../controll
 import { createSession, getAllSession } from "../db/session";
 import { getAllSessionController, sessionController } from "../controllers/session";
 import { courseController, getAllCoursesController } from "../controllers/course";
+import { getAllTimetableController, timeTableController } from "../controllers/timetable";
+import { getAllTimetable } from "../db/timetable";
 const adminrouter = Router();
 
 
@@ -31,6 +33,12 @@ adminrouter.get("/session", getAllSessionController  as any)
 // Course
 adminrouter.post("/course", courseController as any)
 adminrouter.get("/course", getAllCoursesController as any)
+
+// timetable
+adminrouter.post("/time-table", timeTableController as any)
+adminrouter.get("/time-table", getAllTimetableController as any)
+
+
 adminrouter.get("/:id", getAdmin as any)
 adminrouter.get("/",  getAllAdmin   as any);
 

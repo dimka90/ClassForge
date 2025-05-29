@@ -1,5 +1,4 @@
 import { Op } from "sequelize";
-import Invigilator from "../model/invigilator";
 
 import { SessionDetails } from "../types/sessiondetails";
 import Session from "../model/session";

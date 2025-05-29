@@ -5,9 +5,7 @@ import Session from "./session";
 class Timetable extends Model {
   public id!: number;
   public sessionId!: number;
-  public level!: number;
-  public startDate!: string;
-  public endDate!: string;
+  public level!: string;
   public generatedAt!: Date;
 
   static associate(){
@@ -36,14 +34,6 @@ sessionId: {
     type: DataTypes.STRING,
     allowNull: false
 },
-startDate: {
-    type: DataTypes.DATEONLY,
-    allowNull: false
-},
-endDate: {
-      type: DataTypes.DATEONLY,
-    allowNull: false
-},
 generatedAt: {
     type: DataTypes.DATE,
     allowNull: false,
@@ -53,7 +43,8 @@ generatedAt: {
     {
         sequelize,
         tableName: "timetables",
-        modelName: "Timetable"
+        modelName: "Timetable",
+        timestamps: true
 
     }
 )
