@@ -19,21 +19,8 @@ export default function RegisterAdmin() {
           </div>
         </div>
         <div className="bg-white p-8 rounded-t-lg">
-          <h3 className="font-medium text-2xl mb-6">Create an Account</h3>
+          <h3 className="font-medium text-2xl mb-6">Login</h3>
           <form action="" className="flex flex-col gap-4 text-sm">
-            <div className="flex flex-col relative">
-              <label
-                htmlFor=""
-                className="bg-white text-gray-700 px-1 absolute left-4 -top-2 text-xs"
-              >
-                Your Name
-              </label>
-              <input
-                type="text"
-                className="border border-gray-300 text-gray-700 rounded-md px-3 py-3 focus:ring-1"
-                placeholder="Debo Kuda"
-              />
-            </div>
             <div className="flex flex-col relative">
               <label
                 htmlFor=""
@@ -60,9 +47,16 @@ export default function RegisterAdmin() {
                 placeholder="**********"
               />
             </div>
+            <div className="flex justify-between text-xs text-gray-700 mt-2">
+               <div className="flex items-center gap-2">
+                  <input type="checkbox" id="rememberMe" className="w-4 h-4" />
+                  <label htmlFor="rememberMe">Remember me</label>
+               </div>
+               <p>Forgot password?</p>
+            </div>
 
             <button className="bg-[#212121] rouned-md text-white text-sm font-bold py-3 rounded-md">
-              SIGN UP
+              LOGIN
             </button>
           </form>
           <div className="flex items-center my-5">
@@ -100,9 +94,9 @@ export default function RegisterAdmin() {
             </button>
           </div>
           <p className="text-center mt-6 text-xs text-gray-500">
-            Already have an account?{" "}
+            New User?{" "}
             <span className="underline underline-offset-1 font-bold text-gray-900">
-              <Link href="/login">LOGIN HERE</Link>
+              <Link href="/register">SIGN UP HERE</Link>
             </span>
           </p>
         </div>
