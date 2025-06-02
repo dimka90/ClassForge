@@ -18,7 +18,7 @@ export default function RegisterAdmin() {
             </p>
           </div>
         </div>
-        <div className="bg-white p-8 rounded-t-lg">
+        <div className="bg-white p-8 rounded-t-2xl">
           <h3 className="font-medium text-2xl mb-6">Login</h3>
           <form action="" className="flex flex-col gap-4 text-sm">
             <div className="flex flex-col relative">
