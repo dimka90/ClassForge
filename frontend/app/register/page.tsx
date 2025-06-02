@@ -71,7 +71,7 @@ export default function RegisterAdmin() {
             <hr className="flex-grow border-gray-300" />
           </div>
           <div className="text-gray-700 flex flex-col gap-3 text-sm">
-          <button className="border border-gray-300 py-3 rounded-md flex justify-center gap-5">
+            <button className="border border-gray-300 py-3 rounded-md flex justify-center gap-5">
               <Image
                 src="/images/google.png"
                 alt="google"

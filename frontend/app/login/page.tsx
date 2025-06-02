@@ -48,11 +48,15 @@ export default function RegisterAdmin() {
               />
             </div>
             <div className="flex justify-between text-xs text-gray-700 mt-2">
-               <div className="flex items-center gap-2">
-                  <input type="checkbox" id="rememberMe" className="w-4 h-4" />
-                  <label htmlFor="rememberMe">Remember me</label>
-               </div>
-               <p>Forgot password?</p>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  className="w-4 h-4 accent-black"
+                />
+                <label htmlFor="rememberMe">Remember me</label>
+              </div>
+              <p>Forgot password?</p>
             </div>
 
             <button className="bg-[#212121] rouned-md text-white text-sm font-bold py-3 rounded-md">
@@ -65,7 +69,7 @@ export default function RegisterAdmin() {
             <hr className="flex-grow border-gray-300" />
           </div>
           <div className="text-gray-700 flex flex-col gap-3 text-sm">
-          <button className="border border-gray-300 py-3 rounded-md flex justify-center gap-5">
+            <button className="border border-gray-300 py-3 rounded-md flex justify-center gap-5">
               <Image
                 src="/images/google.png"
                 alt="google"
