@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,21 +16,18 @@ export default function RegisterPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Basic validation
     if (!name || !email || !password) {
       toast.error("Please fill in all fields");
       setIsLoading(false);
       return;
     }
 
-    // Email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       toast.error("Please enter a valid email address");
       setIsLoading(false);
       return;
     }
 
-    // Password validation (minimum 6 characters)
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
       setIsLoading(false);
@@ -38,7 +35,6 @@ export default function RegisterPage() {
     }
 
     try {
-      // Replace with your actual registration API call
       const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
@@ -51,7 +47,6 @@ export default function RegisterPage() {
 
       if (response.ok) {
         toast.success("Registration successful!");
-        // Redirect to login page or dashboard
         router.push("/login");
       } else {
         toast.error(data.message || "Registration failed");
