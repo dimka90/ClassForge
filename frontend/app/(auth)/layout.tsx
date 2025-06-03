@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -6,18 +6,20 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <div className="h-full w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 px-4 sm:px-6 lg:px-8 py-4">
         {/* Left Column - Branding (shared across auth pages) */}
         <div className="text-white flex flex-col justify-center items-center lg:items-start h-full">
-          <div className="font-bold text-2xl sm:text-3xl mb-4 lg:mb-8">ClassForge</div>
+          <div className="font-bold text-2xl sm:text-3xl mb-4 lg:mb-8">
+            ClassForge
+          </div>
           <div className="max-w-[400px] text-center lg:text-left">
-            <h1 className="font-bold text-xl sm:text-2xl mb-2">Management Meets Excellence.</h1>
+            <h1 className="font-bold text-xl sm:text-2xl mb-2">
+              Management Meets Excellence.
+            </h1>
             <p className="font-light text-xs sm:text-sm">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Corrupti, soluta. Lorem ipsum dolor, sit amet consectetur
-              adipisicing elit
+              ClassForge simplifies student management by providing tools to
+              create and manage timetables effortlessly. Empower your
+              institution with seamless scheduling and organization.
             </p>
           </div>
         </div>
-
-        {/* Right Column - Page specific content */}
         {children}
       </div>
     </div>
