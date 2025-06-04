@@ -12,7 +12,7 @@ export default function DashboardLayout({
       <div className="flex-1 ml-64">
         <DashboardNavbar
           hasNotifications={true}
-          profileImageUrl="/path/to/profile.jpg"
+          profileImageUrl="/images/Profile.png"
           userName="John Doe"
         />
         <main className="p-8 bg-gray-100 min-h-screen">
