@@ -1,4 +1,5 @@
 import SideBar from "@/components/SideBar";
+import DashboardNavbar from "@/components/DashboardNavbar";
 
 export default function DashboardLayout({
   children,
@@ -8,9 +9,16 @@ export default function DashboardLayout({
   return (
     <div className="flex">
       <SideBar />
-      <main className="flex-1 ml-64 p-8 bg-gray-100 min-h-screen">
-        {children}
-      </main>
+      <div className="flex-1 ml-64">
+        <DashboardNavbar
+          hasNotifications={true}
+          profileImageUrl="/path/to/profile.jpg"
+          userName="John Doe"
+        />
+        <main className="p-8 bg-gray-100 min-h-screen">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
