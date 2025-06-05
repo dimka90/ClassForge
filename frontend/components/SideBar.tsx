@@ -2,22 +2,36 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Settings, ArrowLeft, NotebookText } from "lucide-react";
+import { Home, Settings, ArrowLeft, NotebookText, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 export default function SideBar() {
   const pathname = usePathname();
+  const [isCoursesOpen, setIsCoursesOpen] = useState(pathname.startsWith("/courses"));
+  
   const navItems = [
     { href: "/home", label: "Dashboard", icon: Home },
-    { href: "/courses", label: "Courses", icon: NotebookText },
+    { 
+      href: "/courses", 
+      label: "Courses", 
+      icon: NotebookText,
+      subItems: [
+        { href: "/courses/view-course", label: "View Courses" },
+        { href: "/courses/manage", label: "Manage Courses" },
+      ]
+    },
     { href: "/dashboard/settings", label: "Settings", icon: Settings },
-    // Add more items as needed
   ];
 
-  const isActiveLink = (href:string) => {
+  const isActiveLink = (href: string) => {
     if (href === "/dashboard") {
       return pathname === "/dashboard";
     }
     return pathname.startsWith(href);
+  };
+
+  const toggleCoursesDropdown = () => {
+    setIsCoursesOpen(!isCoursesOpen);
   };
 
   return (
@@ -35,27 +49,58 @@ export default function SideBar() {
             const isActive = isActiveLink(item.href);
             
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`
-                  flex items-center px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group
-                  ${
-                    isActive
-                      ? "bg-white text-black shadow-md"
-                      : "text-slate-300 hover:text-white hover:bg-gray-500"
-                  }
-                `}
-              >
-                <Icon 
-                  className={`mr-3 h-5 w-5 transition-colors ${
-                    isActive 
-                      ? "text-[#212121]" 
-                      : "text-slate-400 group-hover:text-white"
-                  }`} 
-                />
-                <span>{item.label}</span>
-              </Link>
+              <div key={item.href}>
+                <div
+                  onClick={item.subItems ? toggleCoursesDropdown : undefined}
+                  className={`
+                    flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group cursor-pointer
+                    ${
+                      isActive
+                        ? "bg-white text-black shadow-md"
+                        : "text-slate-300 hover:text-white hover:bg-gray-500"
+                    }
+                  `}
+                >
+                  <Link
+                    href={!item.subItems ? item.href : "#"}
+                    className="flex items-center flex-1"
+                  >
+                    <Icon 
+                      className={`mr-3 h-5 w-5 transition-colors ${
+                        isActive 
+                          ? "text-[#212121]" 
+                          : "text-slate-400 group-hover:text-white"
+                      }`} 
+                    />
+                    <span>{item.label}</span>
+                  </Link>
+                  {item.subItems && (
+                    isCoursesOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+                
+                {/* Sub-items */}
+                {item.subItems && isCoursesOpen && (
+                  <div className="ml-8 mt-1 space-y-1">
+                    {item.subItems.map((subItem) => (
+                      <Link
+                        key={subItem.href}
+                        href={subItem.href}
+                        className={`
+                          flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
+                          ${
+                            isActiveLink(subItem.href)
+                              ? "bg-gray-700 text-white"
+                              : "text-slate-300 hover:text-white hover:bg-gray-600"
+                          }
+                        `}
+                      >
+                        <span>{subItem.label}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
