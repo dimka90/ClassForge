@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Plus } from "lucide-react";
 
 interface CourseInfo {
   courseCode: string;
@@ -16,15 +15,6 @@ const AddCourseForm: React.FC = () => {
       creditUnit: "",
     },
   ]);
-
-  const addCourse = () => {
-    const newCourse: CourseInfo = {
-      courseCode: "",
-      courseTitle: "",
-      creditUnit: "",
-    };
-    setCourses([...courses, newCourse]);
-  };
 
   const updateCourse = (
     index: number,
@@ -99,14 +89,7 @@ const AddCourseForm: React.FC = () => {
             {index > 0 && <hr className="my-6 border-gray-200" />}
           </div>
         ))}
-        <div className="flex flex-col sm:flex-row items-center justify-between pt-6 gap-4 sm:gap-0">
-          <button
-            onClick={addCourse}
-            className="flex items-center text-gray-600 hover:text-gray-800 font-medium w-full sm:w-auto justify-center sm:justify-start"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add another
-          </button>
+        <div className="flex items-center justify-end pt-6">
           <button
             onClick={handleAddCourse}
             className="w-full sm:w-auto px-6 py-2 bg-[#212121] text-white rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
