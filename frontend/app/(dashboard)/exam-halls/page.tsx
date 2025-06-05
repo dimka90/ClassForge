@@ -164,7 +164,7 @@ const VenueManagementForm: React.FC = () => {
                             e.target.checked
                           )
                         }
-                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        className="w-3 h-3 rounded accent-gray-900"
                       />
                       <span className="text-sm text-gray-700">{facility}</span>
                     </label>
