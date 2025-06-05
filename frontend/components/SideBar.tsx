@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Settings, ArrowLeft, NotebookText, ChevronDown, ChevronUp } from "lucide-react";
+import { Home, Settings, ArrowLeft, NotebookText, ChevronDown, ChevronUp, Eye, FilePenLine, MapPin } from "lucide-react";
 import { useState } from "react";
 
 export default function SideBar() {
@@ -20,6 +20,9 @@ export default function SideBar() {
         { href: "/courses/manage", label: "Manage Courses" },
       ]
     },
+    { href: "/add-invigilator", label: "Add Invigilator", icon: FilePenLine },
+    { href: "/exam-halls", label: "Exam Halls", icon: MapPin },
+    { href: "/time-table", label: "Time Table", icon: Eye },
     { href: "/dashboard/settings", label: "Settings", icon: Settings },
   ];
 
