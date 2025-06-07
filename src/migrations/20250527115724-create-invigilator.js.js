@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize){
 
-    await queryInterface.createTable("admins", {
+    await queryInterface.createTable("invigilators", {
 
        /**
      * Add altering commands here.
@@ -18,7 +18,7 @@ module.exports = {
       primaryKey: true,
       allowNull: false
       },
-       username: {
+      name: {
       type: Sequelize.STRING,
       allowNull: false
     },
@@ -27,19 +27,13 @@ module.exports = {
       unique: true,
       allowNull: false
     },
-
-    password: {
-    type:Sequelize.STRING,
-    allowNull: false
-    },
     createdAt: {
       type: Sequelize.DATE,
-      allowNull: false,
-
+      allowNull: false
     },
     updatedAt: {
       type: Sequelize.DATE,
-      allowNull: false,
+      allowNull: false
     }
     })
    
@@ -53,7 +47,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-      await queryInterface.dropTable('admins');
+      await queryInterface.dropTable('invigilators');
     
   }
 };

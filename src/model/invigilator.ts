@@ -1,14 +1,13 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/sequilize";
 
-class Admin extends Model{
+class Invigilator extends Model{
     public id!: number;
-    public userName!: string;
-    public password!: string;
-    public email!: string;
+    public name!: string;
+    public email!:string;
 }
 
-Admin.init(
+Invigilator.init(
     {
 id: {
     type: DataTypes.INTEGER,
@@ -17,7 +16,7 @@ id: {
     primaryKey: true
 
 },
-username: {
+name: {
     type: DataTypes.STRING,
     allowNull: false
 },
@@ -25,15 +24,11 @@ username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-password: {
-type:DataTypes.STRING,
-allowNull: false
-}
 },
 {
 sequelize,
-tableName: "admins",
-modelName: "Admins"
+tableName: "invigilators",
+modelName: "Invigilator"
 });
 
-export default Admin;
+export default Invigilator;

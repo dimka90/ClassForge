@@ -1,59 +1,53 @@
 'use strict';
 
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize){
-
-    await queryInterface.createTable("admins", {
-
-       /**
+  async up (queryInterface, Sequelize) {
+    /**
      * Add altering commands here.
      *
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     * 
      */
+
+    await queryInterface.createTable("halls", {
       id:{
         type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
+        autoIncrement: true,
+        primaryKey: true
       },
-       username: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    email: {
-      type: Sequelize.STRING,
-      unique: true,
-      allowNull: false
-    },
-
-    password: {
-    type:Sequelize.STRING,
-    allowNull: false
-    },
-    createdAt: {
+      name: {
+          type: Sequelize.STRING,
+          allowNull: false,
+          unique: true
+      },
+      capacity: {
+          type: Sequelize.INTEGER,
+          allowNull: false
+      },
+  
+        createdAt: {
       type: Sequelize.DATE,
       allowNull: false,
-
+       defaultValue: Sequelize.NOW
     },
     updatedAt: {
       type: Sequelize.DATE,
       allowNull: false,
+      defaultValue: Sequelize.NOW
     }
     })
-   
   },
 
   async down (queryInterface, Sequelize) {
-
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-      await queryInterface.dropTable('admins');
-    
+await queryInterface.dropTable('halls');
   }
 };
