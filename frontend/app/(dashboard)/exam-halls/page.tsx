@@ -94,7 +94,7 @@ const VenueManagementForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 bg-white min-h-screen">
+    <div className="max-w-screen mx-auto p-4 sm:p-6 lg:p-8 bg-white min-h-screen">
       <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">
         Manage Venues
       </h1>

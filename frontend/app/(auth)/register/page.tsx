@@ -73,7 +73,7 @@ export default function RegisterPage() {
           },
         }}
       />
-      <div className="bg-white rounded-xl flex flex-col justify-center p-4 sm:p-6 h-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl flex flex-col justify-center p-4 sm:p-6 h-full max-h-[90vh] sm:max-h-[70h] lg:max-h-[60h] overflow-y-auto">
         <div className="w-full max-w-md mx-auto flex flex-col gap-5">
           <h3 className="font-medium text-xl sm:text-2xl mb-4">
             Create an Account
