@@ -8,7 +8,6 @@ interface Invigilator {
    id: string;
    name: string;
    email: string;
-   phone: string;
    department: string;
    faculty: string;
 }
@@ -19,7 +18,6 @@ const InvigilatorManagementForm: React.FC = () => {
          id: "1",
          name: "",
          email: "",
-         phone: "",
          department: "",
          faculty: "",
       },
@@ -64,7 +62,6 @@ const InvigilatorManagementForm: React.FC = () => {
             id: "1",
             name: "",
             email: "",
-            phone: "",
             department: "",
             faculty: "",
          },
@@ -76,7 +73,6 @@ const InvigilatorManagementForm: React.FC = () => {
          (invigilator) =>
             invigilator.name.trim() !== "" &&
             invigilator.email.trim() !== "" &&
-            invigilator.phone.trim() !== "" &&
             invigilator.department.trim() !== "" &&
             invigilator.faculty.trim() !== ""
       );
@@ -139,20 +135,6 @@ const InvigilatorManagementForm: React.FC = () => {
                         </div>
                         <div className="col-span-1">
                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Phone Number
-                           </label>
-                           <input
-                              type="tel"
-                              value={invigilator.phone}
-                              onChange={(e) =>
-                                 updateInvigilator(index, "phone", e.target.value)
-                              }
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                              placeholder="Enter phone number (e.g., +234 803 123 4567)"
-                           />
-                        </div>
-                        <div className="col-span-1">
-                           <label className="block text-sm font-medium text-gray-700 mb-2">
                               Faculty
                            </label>
                            <select
@@ -168,8 +150,6 @@ const InvigilatorManagementForm: React.FC = () => {
                               ))}
                            </select>
                         </div>
-                     </div>
-                     <div className="grid grid-cols-1 gap-4">
                         <div className="col-span-1">
                            <label className="block text-sm font-medium text-gray-700 mb-2">
                               Department

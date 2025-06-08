@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Home,
-  Settings,
+  Home, 
   ArrowLeft,
   NotebookText,
   ChevronDown,
@@ -36,7 +35,6 @@ export default function SideBar() {
     { href: "/add-invigilator", label: "Add Invigilator", icon: FilePenLine },
     { href: "/exam-halls", label: "Exam Halls", icon: MapPin },
     { href: "/time-table", label: "Time Table", icon: Eye },
-    { href: "/dashboard/settings", label: "Settings", icon: Settings },
   ];
 
   const isActiveLink = (href: string) => {

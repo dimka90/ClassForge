@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import ScheduleParameters from "@/components/ScheduleParamters";
 import CourseSelection from "@/components/CourseSelection";
-import HallSelection from "@/components/HallSelection";
-import InvigilatorSelection from "@/components/InvigilatorSelection";
 import ConstraintSettings from "@/components/ConstraintSettings";
 import GenerationControls from "@/components/GenerationControls";
 import StatusPanel from "@/components/StatusPanel";
@@ -51,18 +49,6 @@ interface Course {
   level: string;
 }
 
-interface Hall {
-  id: string;
-  name: string;
-  capacity: number;
-}
-
-interface Invigilator {
-  id: string;
-  name: string;
-  department: string;
-}
-
 const availableCourses: Course[] = [
   {
     id: "1",
@@ -108,21 +94,6 @@ const availableCourses: Course[] = [
   },
 ];
 
-const availableHalls: Hall[] = [
-  { id: "1", name: "Main Auditorium", capacity: 500 },
-  { id: "2", name: "Computer Lab A", capacity: 80 },
-  { id: "3", name: "Lecture Hall 1", capacity: 150 },
-  { id: "4", name: "Science Complex Hall", capacity: 200 },
-];
-
-const availableInvigilators: Invigilator[] = [
-  { id: "1", name: "Dr. Johnson Adebayo", department: "Computer Science" },
-  { id: "2", name: "Prof. Sarah Ibrahim", department: "Mathematics" },
-  { id: "3", name: "Dr. Michael Okonkwo", department: "Physics" },
-  { id: "4", name: "Mrs. Grace Akande", department: "Chemistry" },
-  { id: "5", name: "Dr. Ahmed Musa", department: "Biology" },
-];
-
 const TimetableSchedulingEngine: React.FC = () => {
   const [scheduleParams, setScheduleParams] = useState<ScheduleParameters>({
     startDate: "",
@@ -166,27 +137,6 @@ const TimetableSchedulingEngine: React.FC = () => {
       selectedCourses: selected
         ? [...prev.selectedCourses, courseId]
         : prev.selectedCourses.filter((id) => id !== courseId),
-    }));
-  };
-
-  const handleHallSelection = (hallId: string, selected: boolean) => {
-    setAssignments((prev) => ({
-      ...prev,
-      selectedHalls: selected
-        ? [...prev.selectedHalls, hallId]
-        : prev.selectedHalls.filter((id) => id !== hallId),
-    }));
-  };
-
-  const handleInvigilatorSelection = (
-    invigilatorId: string,
-    selected: boolean
-  ) => {
-    setAssignments((prev) => ({
-      ...prev,
-      selectedInvigilators: selected
-        ? [...prev.selectedInvigilators, invigilatorId]
-        : prev.selectedInvigilators.filter((id) => id !== invigilatorId),
     }));
   };
 
@@ -289,16 +239,6 @@ const TimetableSchedulingEngine: React.FC = () => {
             filteredCourses={filteredCourses}
             selectedCourses={assignments.selectedCourses}
             handleCourseSelection={handleCourseSelection}
-          />
-          <HallSelection
-            availableHalls={availableHalls}
-            selectedHalls={assignments.selectedHalls}
-            handleHallSelection={handleHallSelection}
-          />
-          <InvigilatorSelection
-            availableInvigilators={availableInvigilators}
-            selectedInvigilators={assignments.selectedInvigilators}
-            handleInvigilatorSelection={handleInvigilatorSelection}
           />
         </div>
         <div className="space-y-6">
