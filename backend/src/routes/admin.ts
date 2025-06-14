@@ -9,6 +9,14 @@ import { courseController, getAllCoursesController } from "../controllers/course
 import { getAllTimetableController, timeTableController } from "../controllers/timetable";
 import {getAllTimetableItemController} from "../controllers/timetableItem"
 import {createTimetableItemController }from "../controllers/timetableItem"
+
+import {
+    generateGeneticTimetableController,
+    optimizeTimetableController,
+    getTimetableWithDetailsController,
+    validateTimetableController
+} from "../controllers/geneticTimetableController";
+
 const adminrouter = Router();
 
 
@@ -42,6 +50,18 @@ adminrouter.get("/time-table", getAllTimetableController as any)
 
 adminrouter.post("/time-table-item", createTimetableItemController  as any);
 adminrouter.get("/time-table-item", getAllTimetableItemController  as any);
+
+//genetic algorithm
+
+adminrouter.post("/generate", generateGeneticTimetableController as any);
+// Optimize existing timetable
+adminrouter.post("/optimize", optimizeTimetableController as any);
+
+// Get timetable with full details
+adminrouter.get("/:timetableId/details", getTimetableWithDetailsController as any);
+
+// Validate timetable for conflicts
+adminrouter.get("/:timetableId/validate", validateTimetableController as any);
 
 
 adminrouter.get("/:id", getAdmin as any)
