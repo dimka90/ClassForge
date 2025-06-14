@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":["file:///home/dimka/Desktop/core-projects/ClassForge/frontend/app/%28dashboard%29/courses/view-course/page.tsx"],"sourcesContent":["import Image from \"next/image\"\nimport Link from \"next/link\"\n\nexport default function ViewCourses(){\n   return(\n      <div className=\"flex flex-col items-center justify-center h-screen text-gray-600\">\n         <Image src=\"/images/no-course.png\" alt=\"sleeping bear\" width={340} height={255}/>\n         <h1 className=\"text-2xl mb-1\">No course available</h1>\n         <p className=\"text-sm mb-5\">Courses will appear here after they have been added.</p>\n         <Link href=\"/courses/manage\" className=\"bg-[#212121] text-white text-sm font-semibold px-4 py-2 rounded-sm\">Add Course</Link>\n      </div>\n   )\n}"],"names":[],"mappings":";;;;AAAA;AACA;;;;AAEe,SAAS;IACrB,qBACG,8OAAC;QAAI,WAAU;;0BACZ,8OAAC,6HAAA,CAAA,UAAK;gBAAC,KAAI;gBAAwB,KAAI;gBAAgB,OAAO;gBAAK,QAAQ;;;;;;0BAC3E,8OAAC;gBAAG,WAAU;0BAAgB;;;;;;0BAC9B,8OAAC;gBAAE,WAAU;0BAAe;;;;;;0BAC5B,8OAAC,4JAAA,CAAA,UAAI;gBAAC,MAAK;gBAAkB,WAAU;0BAAqE;;;;;;;;;;;;AAGrH","debugId":null}}]
-}
